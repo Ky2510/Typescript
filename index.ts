@@ -1,40 +1,55 @@
-let fullName: string = "Rinaldi Rizqi Fauzi"
-let age: number = 25
-let isMarried: boolean = false
-let statusMarried: string = (isMarried == false) ? "single" : "already married"
-let hobbies: string[]
-let numberPhone: [string, number]
+function add(x:number, y:number): number {
+   return x + y 
+} 
+console.log(add(2, 3))
 
-enum transmission {
-    gear = "gear",
-    clutch = "clutch",
-    automatic = "automatic"
+let myAdd = function myAdd(x:number, y:number): number {
+    return x + y
+}
+console.log(myAdd(5, 4))
+
+let myFullName = function buildName(firstName:string, lastName:string) {
+    return firstName + " " + lastName
 }
 
-type motorCycle = {
-    name: string,
-    type: string,
-    motorbikePlate: string,
-    color: string,
-    transmission: string,
+let myCallName = function buildName(firstName:string, lastName?:string) {
+    if (lastName) {
+        return firstName + " " + lastName
+    }else if(firstName){
+        return firstName
+    }
+
+}
+console.log(myCallName("Rinaldi"))
+
+let myLastName = function buildName(firstName:string, lastName = "Rizqi Fauzi"){
+    return firstName + " " + lastName
+}
+console.log(myLastName("Rinaldi", "LrvL"))
+
+const arr = [1, 2, 3, 4, 5]
+arr.forEach(value => {
+    console.log(value)
+})
+
+console.log(arr.map(value => (value * 2)))
+
+const arr1 = [1, 2, 3, 4, 5]
+arr1.unshift(11)
+console.log(arr1)
+
+const arr2 = [1, 2, 3, 4, 5]
+arr2.push(6)
+console.log(arr2)
+
+function vehicle(name: string, payTax:(cek: boolean) => string) {
+    return `Halo ${name}, ${payTax(false)} membayar pajak `
 }
 
-const myMotorCycle: motorCycle = {
-    name: "Vario 125 CC",
-    type: "Honda",
-    motorbikePlate: "AB 2510 XYZ",
-    color: "black and white",
-    transmission: transmission.automatic
+function callback(cek: boolean) {
+    if (!cek) {
+        return "belum" 
+    }
+    return "sudah"
 }
-
-hobbies = ["ngoding", "playing games"]
-
-numberPhone = ['My number phone', 6285763063891]
-
-console.log(`My name        : ${fullName}`)
-console.log(`My age         : ${age}`)
-console.log(`My hobbies     : ${hobbies}`)
-console.log(numberPhone[0] + ": " + numberPhone[1])
-console.log(`Status married : ${statusMarried}`)
-console.log("========My Vehicle========")
-console.log(myMotorCycle)
+console.log(vehicle("Kyy", callback))
